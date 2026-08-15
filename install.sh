@@ -4,7 +4,7 @@
 # Nemo actions together with the mount-archive.sh helper script.
 #
 # What it does:
-#   1. installs dependencies (archivemount, fuse, python3, nemo)
+#   1. installs dependencies (archivemount, fuse, nemo)
 #   2. copies mount-archive.sh to ~/.local/bin and makes it executable
 #   3. renders the .nemo_action templates (placeholder __MOUNT_ARCHIVE_BIN__)
 #      into ~/.local/share/nemo/actions (per-user, no root required, and no
@@ -45,22 +45,22 @@ done
 # ---------------------------------------------------------------------------
 # 2. Install dependencies
 # ---------------------------------------------------------------------------
-log "Installing dependencies (archivemount, fuse, python3, nemo)..."
+log "Installing dependencies (archivemount, fuse, nemo)..."
 
 if command -v apt-get >/dev/null 2>&1; then
 	sudo apt-get update
-	sudo apt-get install -y archivemount fuse3 python3 nemo
+	sudo apt-get install -y archivemount fuse3 nemo
 elif command -v dnf >/dev/null 2>&1; then
-	sudo dnf install -y archivemount fuse python3 nemo
+	sudo dnf install -y archivemount fuse nemo
 elif command -v pacman >/dev/null 2>&1; then
-	sudo pacman -S --needed --noconfirm archivemount fuse2 python nemo
+	sudo pacman -S --needed --noconfirm archivemount fuse2 nemo
 elif command -v zypper >/dev/null 2>&1; then
-	sudo zypper install -y archivemount fuse python3 nemo
+	sudo zypper install -y archivemount fuse nemo
 else
-	warn "Unknown package manager. Install manually: archivemount, fuse, python3, nemo."
+	warn "Unknown package manager. Install manually: archivemount, fuse, nemo."
 fi
 
-for cmd in archivemount python3 nemo fusermount; do
+for cmd in archivemount nemo fusermount; do
 	if ! command -v "$cmd" >/dev/null 2>&1; then
 		warn "'$cmd' was not found in PATH after installation -- check manually."
 	fi

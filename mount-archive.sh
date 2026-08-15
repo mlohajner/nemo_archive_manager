@@ -15,24 +15,27 @@ add_bookmark() {
 	local path="$1"
 	local label="$2"
 	local uri
-
-	uri="$(python3 -c 'import pathlib, sys; print(pathlib.Path(sys.argv[1]).as_uri())' "$path")"
-
+ 
+	# Safe without percent-encoding: $path is always built from $mount_root
+	# ("/run/user/$UID/archivemount") plus a name already sanitized to
+	# [[:alnum:]_.-], so it never contains spaces or other special chars.
+	uri="file://$path"
+ 
 	touch "$bookmarks_file"
-
+ 
 	if ! grep -Fq "$uri " "$bookmarks_file" 2>/dev/null; then
 		printf '%s %s\n' "$uri" "📦 $label" >> "$bookmarks_file"
 	fi
 }
-
+ 
 remove_bookmark() {
 	local path="$1"
 	local uri tmp
-
+ 
 	[[ -f "$bookmarks_file" ]] || return 0
-
-	uri="$(python3 -c 'import pathlib, sys; print(pathlib.Path(sys.argv[1]).as_uri())' "$path")"
-
+ 
+	uri="file://$path"
+ 
 	tmp="$(mktemp)"
 	grep -Fv "$uri " "$bookmarks_file" > "$tmp" || true
 	mv "$tmp" "$bookmarks_file"
