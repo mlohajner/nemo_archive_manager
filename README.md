@@ -1,4 +1,4 @@
-# Nemo *Mount archive*
+# Nemo *Mount archive RW+*
 
 Read-write archive mounting for the Nemo file manager, built on top of [`archivemount`](https://github.com/cybernoid/archivemount).
 
