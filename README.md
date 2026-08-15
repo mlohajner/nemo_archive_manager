@@ -8,28 +8,30 @@ Right-click an archive (`.zip`, `.tar`, `.7z`, `.rar`, `.iso`, `.cpio`, ...) in 
 
 ## Read-only vs. RW+
 
-Nemo ships with a built-in **"Mount Archive"** action that mounts archives through GVfs — **read-only**. You can browse the contents, but you can't add, edit, rename, or delete anything inside.
+Nemo ships with a built-in **"Mount Archive"** action that mounts archives through GVfs **read-only**. You can browse the contents, but you can't add, edit, rename, or delete anything inside.
 
-This project installs a separate **"Mount archive RW+"** action, backed by `archivemount`, that mounts **read-write** — for every archive format `archivemount` (via `libarchive`) can read, **with one exception: RAR**. RAR archives can be read but not written back (libarchive has no RAR writer, since it's a proprietary format), so editing a mounted `.rar` will not persist on unmount.
+This project installs a separate **"Mount archive RW+"** action, backed by `archivemount`, that mounts **read-write** for every archive format `archivemount` (via `libarchive`) can read, **with one exception: RAR**. RAR archives can be read but not written back (libarchive has no RAR writer, since it's a proprietary format), so editing a mounted `.rar` will not persist on unmount.
 
 To avoid the two actions competing for the same right-click menu entry, `install.sh` disables the built-in read-only one (see below).
 
 ## Features
 
-- **RW mode** — mounts archives read-write via `archivemount -o rw`, so you can add, edit, rename, and delete files directly inside the archive (all formats `archivemount` supports, except RAR — see above).
-- **Automatic GTK bookmark** — on mount, a bookmark is added to Nemo's sidebar (`~/.config/gtk-3.0/bookmarks`) pointing at the mounted archive, labeled with a 📦 icon; it's removed automatically on unmount.
-- **Idempotent mounting** — re-running "Mount archive RW+" on an already-mounted archive just re-adds the bookmark and opens it, instead of mounting it twice.
-- **Clean unmount action** — a matching "Unmount archive RW+" action appears when right-clicking the mounted directory, restricted to the tool's own mount points only.
-- **No system package conflicts** — replaces Nemo's built-in (read-only, GVfs-based) "Mount Archive" action by disabling it, instead of fighting over the same menu entry.
-- **Distro-agnostic installer** — one `install.sh` detects the package manager (`apt`, `dnf`, `pacman`, `zypper`) and installs everything needed.
+- **RW mode** - mounts archives read-write via `archivemount -o rw`, so you can add, edit, rename, and delete files directly inside the archive (all formats `archivemount` supports, except RAR - see above).
+- **Automatic GTK bookmark** - on mount, a bookmark is added to Nemo's sidebar (`~/.config/gtk-3.0/bookmarks`) pointing at the mounted archive, labeled with a 📦 icon; it's removed automatically on unmount.
+- **Idempotent mounting** - re-running "Mount archive RW+" on an already-mounted archive just re-adds the bookmark and opens it, instead of mounting it twice.
+- **Clean unmount action** - a matching "Unmount archive RW+" action appears when right-clicking the mounted directory, restricted to the tool's own mount points only.
+- **No system package conflicts** - replaces Nemo's built-in (read-only, GVfs-based) "Mount Archive" action by disabling it, instead of fighting over the same menu entry.
+- **Distro-agnostic installer** - one `install.sh` detects the package manager (`apt`, `dnf`, `pacman`, `zypper`) and installs everything needed.
 
 ## Scope
 
-The tooling itself is **distribution-agnostic** — it targets Nemo on any Cinnamon (or Cinnamon-adjacent) desktop, using only standard XDG paths and each distro's own package manager. There's nothing Fedora- or Mint-specific baked into the scripts.
+The tooling itself is **distribution-agnostic** - it targets Nemo on any Cinnamon (or Cinnamon-adjacent) desktop, using only standard XDG paths and each distro's own package manager. There's nothing Fedora or Mint-specific baked into the scripts.
 
 That said, **development and testing are done on Fedora 43**. Other distributions listed below should work identically in principle, and Linux Mint (Nemo's home distro) gets the most attention after Fedora, but they haven't been verified as thoroughly.
 
-This is **not a replacement for File-Roller or a dedicated archive manager**. It's a convenience for working with the contents of an *existing* archive — mounting it and editing files in place, the way you'd work in a regular directory. It doesn't create new archives, doesn't offer compression settings, and doesn't handle multi-volume or split archives. For creating archives from scratch, or anything beyond quick in-place edits, use File-Roller (or your distro's preferred archive manager) instead.
+**This is not a replacement for File-Roller or a dedicated archive manager**.  
+It's a convenience for working with the contents of an *existing* archive - mounting it and editing files in place, the way you'd work in a regular directory.  
+It doesn't create new archives, doesn't offer compression settings, and doesn't handle multi-volume or split archives. For creating archives from scratch, or anything beyond quick in-place edits, use File-Roller (or your distro's preferred archive manager) instead.
 
 ## Requirements
 
