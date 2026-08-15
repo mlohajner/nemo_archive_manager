@@ -42,6 +42,7 @@ nemo --self "$mountpoint" &
 - **After the patch** (`nemo --self "$mountpoint" &`): current Nemo window is simply navigated to the new `$mountpoint`. No windows or tabs pile up — the user stays in the same window, only the displayed path changes. If Nemo isn't running at all, it behaves like a normal launch (a single new window opens).
 
 This gives a cleaner, "desktop-integrated" feel: the archive opens as if the folder simply changed in the file manager the user is already looking at, instead of a new window popping up.
+`mount-archive.sh` included in this directory uses patched Nemo with --self option!
 
 ## How it works (technical, brief)
 
