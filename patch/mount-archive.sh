@@ -65,7 +65,7 @@ do_mount() {
 	# Already mounted: add bookmark and open it.
 	if mountpoint -q "$mountpoint" 2>/dev/null; then
 		add_bookmark "$mountpoint" "$name"
-		nemo --self "$mountpoint" &
+		nemo --self "$mountpoint"
 		exit 0
 	fi
 
@@ -86,7 +86,7 @@ do_mount() {
 	add_bookmark "$mountpoint" "$name"
 
 	# Open mounted archive in Nemo.
-	nemo --self "$mountpoint" &
+	nemo --self "$mountpoint"
 }
 
 do_unmount() {
