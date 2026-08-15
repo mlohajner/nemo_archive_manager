@@ -86,7 +86,7 @@ do_mount() {
 	add_bookmark "$mountpoint" "$name"
 
 	# Open mounted archive in Nemo.
-	#nemo "$mountpoint" &
+	nemo "$mountpoint" &
 }
 
 do_unmount() {
