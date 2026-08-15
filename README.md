@@ -10,7 +10,8 @@ Right-click an archive (`.zip`, `.tar`, `.7z`, `.rar`, `.iso`, `.cpio`, ...) in 
 
 Nemo ships with a built-in **"Mount Archive"** action that mounts archives through GVfs — **read-only**. You can browse the contents, but you can't add, edit, rename, or delete anything inside.
 
-This project installs a separate **"Mount archive RW+"** action, backed by `archivemount`, that mounts **read-write** — for every archive format `archivemount` (via `libarchive`) can read, **with one exception: RAR**. RAR archives can be read but not written back (libarchive has no RAR writer, since it's a proprietary format), so editing a mounted `.rar` will not persist on unmount.
+This project installs a separate **"Mount archive RW+"** action, backed by `archivemount`, that mounts **read-write**.  
+Every archive format `archivemount` (via `libarchive`) can read, **with one exception: RAR**. RAR archives can be read but not written back (libarchive has no RAR writer, since it's a proprietary format), so editing a mounted `.rar` will not persist on unmount.
 
 To avoid the two actions competing for the same right-click menu entry, `install.sh` disables the built-in read-only one (see below).
 
