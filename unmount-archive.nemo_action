@@ -1,0 +1,14 @@
+[Nemo Action]
+
+Name=Unmount archive RW+
+Comment=Unmount the read-write archive
+
+Exec=__MOUNT_ARCHIVE_BIN__ -u %F
+
+Selection=s
+
+Mimetypes=inode/directory;
+
+Icon-Name=media-eject-symbolic
+
+Dependencies=archivemount;
