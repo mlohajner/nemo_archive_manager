@@ -33,7 +33,7 @@ nemo "$mountpoint" &
 use:
 
 ```bash
-nemo --self "$mountpoint" &
+nemo --self "$mountpoint"
 ```
 
 **Difference in behavior:**
