@@ -5,6 +5,8 @@ This directory contains prebuilt binary of Nemo with:
 - bandwidth graph patch
 - self patch
 
+<img src="Ultimate.png" width="70%">
+
 These binaries are provided for *Fedora users* who prefer not to compile the source code manually.
 No installation needed, backup your current /usr/bin/nemo and replace with provided executable
 
