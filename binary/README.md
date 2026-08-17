@@ -4,6 +4,7 @@ This directory contains prebuilt binary of Nemo with:
 - gallery_patch
 - bandwidth graph patch
 - self patch
+- nemo icon
 
 <img src="Ultimate.png" width="70%">
 
