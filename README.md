@@ -1,4 +1,4 @@
-<h1> <img src="nemo.png" width="40" valign="middle" alt="Nemo icon"> Nemo *Mount archive RW+ </h1>
+<h1> <img src="nemo.png" width="64" valign="middle" alt="Nemo icon"> Nemo *Mount archive RW+ </h1>
 
 Read-write archive mounting for the Nemo file manager, built on top of [`archivemount`](https://github.com/cybernoid/archivemount).
 
