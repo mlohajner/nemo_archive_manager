@@ -4,9 +4,10 @@ Read-write archive mounting for the Nemo file manager, built on top of [`archive
 
 Right-click an archive (`.zip`, `.tar`, `.7z`, `.rar`, `.iso`, `.cpio`, ...) in Nemo, choose **"Mount archive RW+"**, and browse/edit its contents like a regular directory. When you unmount, `archivemount` writes the changes back into the archive.
 
-> This is ment for convenience editing of existing archives. It's not a replacement for File-Roller or similar dedicated archivers. It can't create new archives, and offers none of the compression/format options a real archive manager gives you. For that, keep using File-Roller (or your distro's default archive manager).
 <img src="screenshots/archive1.png" width="40%" align="left">
 <img src="screenshots/archive2.png" width="40%">
+
+> This is ment for convenience editing of existing archives. It's not a replacement for File-Roller or similar dedicated archivers. It can't create new archives, and offers none of the compression/format options a real archive manager gives you. For that, keep using File-Roller (or your distro's default archive manager).
 
 ## Read-only vs. RW+
 
